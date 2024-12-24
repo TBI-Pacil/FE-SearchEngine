@@ -9,3 +9,5 @@ Covearch is a web-based search engine designed to provide information related to
 3. Responsive Design: Optimised for various devices, ensuring a seamless user experience on desktops, tablets, and mobile phones.
 
 ## Demo Video
+
+https://github.com/user-attachments/assets/31b186a3-0b75-45cc-89bc-123b829d5cfd
