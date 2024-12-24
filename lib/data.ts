@@ -18,7 +18,7 @@ export async function getSearchResult(q: string): Promise<SearchResultReponse> {
 
     const { results } = await response.json();
 
-    return { isError: false, results };
+    return { isError: false, results: results ?? [] };
   } catch {
     return {
       isError: true,
