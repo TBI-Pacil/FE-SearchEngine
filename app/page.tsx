@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import SearchBar from '@/components/SearchBar';
+import SearchBar from '@/components/search/SearchBar';
 import { useState } from 'react';
 
 const defaultSuggestions = [
@@ -27,7 +27,14 @@ export default function Home() {
     <main className="mx-4 flex min-h-screen flex-col items-center justify-center">
       <div className="flex h-[350px] w-full max-w-[600px] flex-col gap-4">
         <div className="flex items-center justify-center gap-2">
-          <Image src="/icon.svg" alt="Logo" width={96} height={96} />
+          <Image
+            src="/icon.svg"
+            alt="Logo"
+            width={96}
+            height={96}
+            loading="eager"
+            priority
+          />
           <h1 className="text-h1 font-semibold">Covearch</h1>
         </div>
         <SearchBar suggestions={suggestions} onChange={updateSuggestions} />

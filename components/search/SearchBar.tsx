@@ -2,8 +2,8 @@
 
 import useClickOutside from '@/hooks/useClickOutside';
 import Form from 'next/form';
-import SearchButton from '@/components/SearchButton';
-import SearchSuggestion from './SearchSuggestion';
+import SearchButton from '@/components/search/SearchButton';
+import SearchSuggestion from '@/components/search/SearchSuggestion';
 import { Input } from '@/components/ui/input';
 import {
   ChangeEvent,
@@ -18,13 +18,17 @@ import { cn } from '@/lib/utils';
 type SearchBarProps = {
   suggestions?: string[];
   onChange?: (value: string) => void;
+  className?: string;
+  defaultValue?: string;
 };
 
 export default function SearchBar({
   suggestions,
   onChange,
+  className,
+  defaultValue = '',
 }: Readonly<SearchBarProps>) {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(defaultValue);
   const [inputFocus, setInputFocus] = useState(false);
   const [suggestionClicked, setSuggestionClicked] = useState(false);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(-1);
@@ -120,6 +124,7 @@ export default function SearchBar({
         {
           'shadow-[0_0_4px_0_rgba(130,130,130,0.65)]': inputFocus,
         },
+        className,
       )}
       ref={divRef}
       onKeyDown={handleSuggestionsKey}
@@ -136,7 +141,7 @@ export default function SearchBar({
           placeholder="Search Covid-19 Information..."
           autoComplete="off"
           className={cn(
-            'h-12 flex-1 rounded-r-none border border-gray-300 focus-visible:ring-0',
+            'h-12 flex-1 rounded-r-none border border-gray-300 bg-white focus-visible:ring-0',
             {
               'rounded-bl-none shadow-none': showSuggestions,
             },
